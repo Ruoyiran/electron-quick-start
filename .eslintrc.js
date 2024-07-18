@@ -19,8 +19,6 @@ module.exports = {
     "plugin:import/typescript",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:unicorn/recommended",
-    "plugin:promise/recommended",
     "plugin:prettier/recommended"
   ],
   globals: {
@@ -38,15 +36,14 @@ module.exports = {
   settings: {
     "import/resolver": {
       node: {
-        // import 模块时，不写后缀将尝试导入的后缀，出现频率高的文件类型放前面
-        extensions: [".tsx", ".ts", ".js", ".json"]
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
       },
       typescript: {
         directory: [resolve("./tsconfig.json")]
       }
     }
   },
-  plugins: ["react", "@typescript-eslint", "unicorn", "promise"],
+  plugins: ["react", "@typescript-eslint"],
   rules: {
     "eslint-comments/disable-enable-pair": [ERROR, { allowWholeFile: true }],
 
@@ -60,34 +57,19 @@ module.exports = {
         js: "never"
       }
     ],
-
-    "unicorn/filename-case": [
-      ERROR,
-      {
-        cases: {
-          // 中划线
-          kebabCase: false,
-          // 小驼峰
-          camelCase: true,
-          // 下划线
-          snakeCase: false,
-          // 大驼峰
-          pascalCase: true
-        }
-      }
-    ],
-    "unicorn/no-null": OFF,
-    "unicorn/prevent-abbreviations": OFF,
-    "unicorn/no-process-exit": OFF,
-
+    "import/no-unresolved": OFF,
+    "import/order": OFF,
+    "import/no-self-import": OFF,
+    "import/no-extraneous-dependencies": OFF,
     "@typescript-eslint/explicit-function-return-type": OFF,
     "@typescript-eslint/no-explicit-any": OFF,
     "@typescript-eslint/no-non-null-assertion": OFF,
-    "@typescript-eslint/no-useless-constructor": ERROR,
-
+    "@typescript-eslint/no-var-requires": OFF,
+    "@typescript-eslint/no-useless-constructor": ERROR, 
+    "@typescript-eslint/no-unused-vars": OFF,
     "react/jsx-filename-extension": [ERROR, { extensions: [".tsx"] }],
     "react/require-default-props": OFF,
-
+    "react/button-has-type": OFF,
     "func-names": OFF,
     "lines-between-class-members": OFF,
     "max-classes-per-file": OFF,
